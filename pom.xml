@@ -11,6 +11,11 @@
 	<properties>
 		<docker.image.prefix>kammana</docker.image.prefix>
 		<sonar.host.url>http://18.181.164.81:9000/</sonar.host.url>
+		
+	<maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+    <maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
 
 	</properties>
 	<dependencies>
@@ -24,6 +29,47 @@
 		</dependency>
 
 	</dependencies>
+
+	<build>
+  <pluginManagement>
+    <plugins>
+      <!-- ensure a modern compiler plugin that supports --release 17 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.plugin.version}</version>
+        <configuration>
+          <release>${maven.compiler.release}</release>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- surefire updated to handle tests properly on JDK17 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.plugin.version}</version>
+        <configuration>
+          <!-- for classic (non-modular) projects it's safer to disable module-path -->
+          <useModulePath>false</useModulePath>
+          <trimStackTrace>false</trimStackTrace>
+        </configuration>
+      </plugin>
+    </plugins>
+  </pluginManagement>
+
+  <plugins>
+    <!-- activate the configured plugins -->
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+    </plugin>
+  </plugins>
+</build>
 	
 	<distributionManagement>
 		 <snapshotRepository>
