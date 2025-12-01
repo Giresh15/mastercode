@@ -4,7 +4,7 @@
 	<groupId>in.javahome</groupId>
 	<artifactId>myweb</artifactId>
 	<packaging>war</packaging>
-	<version>8.6.3</version>
+	<version>8.6.2</version>
 	<name>Java Home myweb</name>
 	<url>http://maven.apache.org</url>
 	
@@ -24,16 +24,6 @@
 		</dependency>
 
 	</dependencies>
-<build>
-        <plugins>
-            <!-- Updated war plugin to support Java 17 / new JVM -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.4.0</version>
-            </plugin>
-        </plugins>
-    </build>
 	
 	<distributionManagement>
 		 <snapshotRepository>
@@ -51,7 +41,7 @@
 	    <pluginRepository>    
 		<id>maven1</id>
 		<name>Maven.org</name>
-		<url>https://repo1.maven.org/maven2</url>
+		<url>http://repo1.maven.org/maven2</url>
 	    </pluginRepository>
 	</pluginRepositories>
 
