@@ -33,7 +33,7 @@
 	<build>
   <pluginManagement>
     <plugins>
-      <!-- ensure a modern compiler plugin that supports --release 17 -->
+    
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -44,13 +44,13 @@
         </configuration>
       </plugin>
 
-      <!-- surefire updated to handle tests properly on JDK17 -->
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.plugin.version}</version>
         <configuration>
-          <!-- for classic (non-modular) projects it's safer to disable module-path -->
+          
           <useModulePath>false</useModulePath>
           <trimStackTrace>false</trimStackTrace>
         </configuration>
@@ -59,7 +59,7 @@
   </pluginManagement>
 
   <plugins>
-    <!-- activate the configured plugins -->
+    
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-compiler-plugin</artifactId>
